@@ -1,0 +1,460 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MicroService_Face_3_0</name>
+    </assembly>
+    <members>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFGetActiveFileInfo(System.IntPtr)">
+            <summary>
+            获取激活文件信息。
+            </summary>
+            <param name="activeFileInfo">激活文件信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFOnlineActivation(System.String,System.String)">
+            <summary>
+            用于在线激活SDK。
+            </summary>
+            <param name="appId">官网获取的APPID</param>
+            <param name="sdkKey">官网获取的SDKKEY</param>
+            <returns></returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFActivation(System.String,System.String)">
+            <summary>
+            激活人脸识别SDK引擎函数,ASFActivation 接口与ASFOnlineActivation 功能一致，用于兼容老用户。
+            </summary>
+            <param name="appId">SDK对应的AppID</param>
+            <param name="sdkKey">SDK对应的SDKKey</param>
+            <returns>调用结果</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFInitEngine(System.UInt32,System.Int32,System.Int32,System.Int32,System.Int32,System.IntPtr@)">
+            <summary>
+            初始化引擎
+            </summary>
+            <param name="detectMode">AF_DETECT_MODE_VIDEO 视频模式 | AF_DETECT_MODE_IMAGE 图片模式</param>
+            <param name="detectFaceOrientPriority">检测脸部的角度优先值，推荐：ASF_OrientPriority.ASF_OP_0_HIGHER_EXT</param>
+            <param name="detectFaceScaleVal">用于数值化表示的最小人脸尺寸</param>
+            <param name="detectFaceMaxNum">最大需要检测的人脸个数</param>
+            <param name="combinedMask">用户选择需要检测的功能组合，可单个或多个</param>
+            <param name="hEngine">初始化返回的引擎handle</param>
+            <returns>调用结果</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFDetectFaces(System.IntPtr,System.Int32,System.Int32,System.Int32,System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            人脸检测
+            </summary>
+            <param name="hEngine">引擎handle</param>
+            <param name="width">图像宽度</param>
+            <param name="height">图像高度</param>
+            <param name="format">图像颜色空间</param>
+            <param name="imgData">图像数据</param>
+            <param name="detectedFaces">人脸检测结果</param>
+            <param name="detectModel">预留字段，当前版本使用默认参数即可</param>
+            <returns>调用结果</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFDetectFacesEx(System.IntPtr,System.IntPtr,System.IntPtr@,System.Int32)">
+            <summary>
+            检测人脸信息。
+            </summary>
+            <param name="hEngine">引擎句柄</param>
+            <param name="ImgData">图像数据</param>
+            <param name="detectedFaces">检测到的人脸信息</param>
+            <param name="detectModel">预留字段，当前版本使用默认参数即可</param>
+            <returns>人脸信息</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFFaceFeatureExtract(System.IntPtr,System.Int32,System.Int32,System.Int32,System.IntPtr,System.IntPtr,System.IntPtr)">
+            <summary>
+            单人脸特征提取
+            </summary>
+            <param name="hEngine">引擎handle</param>
+            <param name="width">图像宽度，为4的倍数</param>
+            <param name="height">图像高度，YUYV/I420/NV21/NV12格式为2的倍数；BGR24/GRAY/DEPTH_U16格式无限制</param>
+            <param name="format">图像颜色空间</param>
+            <param name="imgData">图像数据</param>
+            <param name="faceInfo">单人脸信息（人脸框、人脸角度）</param>
+            <param name="faceFeature">提取到的人脸特征信息</param>
+            <returns>人脸特征信息</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFFaceFeatureExtractEx(System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)">
+            <summary>
+            单人特征提取。
+            </summary>
+            <param name="hEngine">引擎句柄</param>
+            <param name="imgData">图像数据</param>
+            <param name="faceInfo">单人脸信息（人脸框、人脸角度）</param>
+            <param name="feature">提取到的人脸特征信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFFaceFeatureCompare(System.IntPtr,System.IntPtr,System.IntPtr,System.Single@,System.Int32)">
+            <summary>
+            人脸特征比对，输出比对相似度。
+            </summary>
+            <param name="hEngine">引擎句柄</param>
+            <param name="feature1">人脸特征</param>
+            <param name="feature2">人脸特征</param>
+            <param name="confidenceLevel">比对相似度</param>
+            <param name="compareModel">选择人脸特征比对模型，默认为ASF_LIFE_PHOTO。
+            1. ASF_LIFE_PHOTO：用于生活照之间的特征比对，推荐阈值0.80；
+            2. ASF_ID_PHOTO：用于证件照或证件照和生活照之间的特征比对，推荐阈值0.82；</param>
+            <returns>比对相似度</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFSetLivenessParam(System.IntPtr,System.IntPtr)">
+            <summary>
+            设置RGB/IR活体阈值，若不设置内部默认RGB：0.5 IR：0.7。
+            </summary>
+            <param name="hEngine">引擎句柄</param>
+            <param name="threshold">活体阈值，推荐RGB:0.5 IR:0.7</param>
+            <returns>设置状态</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFProcess(System.IntPtr,System.Int32,System.Int32,System.Int32,System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            人脸属性检测
+            </summary>
+            <param name="hEngine">引擎句柄</param>
+            <param name="width">图片宽度，为4的倍数</param>
+            <param name="height">图片高度，YUYV/I420/NV21/NV12格式为2的倍数；BGR24格式无限制；</param>
+            <param name="format">支持YUYV/I420/NV21/NV12/BGR24</param>
+            <param name="imgData">图像数据</param>
+            <param name="detectedFaces">多人脸信息</param>
+            <param name="combinedMask">1.检测的属性（ASF_AGE、ASF_GENDER、 ASF_FACE3DANGLE、ASF_LIVENESS），支持多选
+            2.检测的属性须在引擎初始化接口的combinedMask参数中启用</param>
+            <returns>检测状态</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFProcessEx(System.IntPtr,System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            人脸信息检测（年龄/性别/人脸3D角度），最多支持4张人脸信息检测，超过部分返回未知（活体仅支持单张人脸检测，超出返回未知）,接口不支持IR图像检测。
+            </summary>
+            <param name="hEngine">引擎句柄</param>
+            <param name="imgData">图像数据</param>
+            <param name="detectedFaces">多人脸信息</param>
+            <param name="combinedMask">1.检测的属性（ASF_AGE、ASF_GENDER、 ASF_FACE3DANGLE、ASF_LIVENESS），支持多选
+            2.检测的属性须在引擎初始化接口的combinedMask参数中启用</param>
+            <returns>检测状态</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFGetAge(System.IntPtr,System.IntPtr)">
+            <summary>
+            获取年龄信息
+            </summary>
+            <param name="hEngine">引擎handle</param>
+            <param name="ageInfo">检测到的年龄信息</param>
+            <returns>调用结果</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFGetGender(System.IntPtr,System.IntPtr)">
+            <summary>
+            获取性别信息
+            </summary>
+            <param name="hEngine">引擎handle</param>
+            <param name="genderInfo">检测到的性别信息</param>
+            <returns>调用结果</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFGetFace3DAngle(System.IntPtr,System.IntPtr)">
+            <summary>
+            获取3D角度信息
+            </summary>
+            <param name="hEngine">引擎handle</param>
+            <param name="p3DAngleInfo">检测到脸部3D角度信息</param>
+            <returns>调用结果</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFGetLivenessScore(System.IntPtr,System.IntPtr)">
+            <summary>
+            获取RGB活体信息。
+            </summary>
+            <param name="hEngine">引擎句柄</param>
+            <param name="livenessInfo">检测到的活体信息</param>
+            <returns>调用结果</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFProcess_IR(System.IntPtr,System.Int32,System.Int32,System.Int32,System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            该接口仅支持单人脸IR 活体检测，超出返回未知。
+            </summary>
+            <param name="hEngine">引擎句柄</param>
+            <param name="width">图片宽度，为4的倍数</param>
+            <param name="height">图片高度</param>
+            <param name="format">图像颜色格式</param>
+            <param name="imgData">图像数据</param>
+            <param name="detectedFaces">多人脸信息</param>
+            <param name="combinedMask">目前仅支持ASF_IR_LIVENESS</param>
+            <returns>调用结果</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFProcessEx_IR(System.IntPtr,System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            该接口仅支持单人脸IR 活体检测，超出返回未知。
+            </summary>
+            <param name="hEngine">引擎句柄</param>
+            <param name="imgData">图像数据</param>
+            <param name="detectedFaces">多人脸信息</param>
+            <param name="combinedMask">目前仅支持ASF_IR_LIVENESS</param>
+            <returns>调用结果</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFGetLivenessScore_IR(System.IntPtr,System.IntPtr)">
+            <summary>
+            获取IR活体信息。
+            </summary>
+            <param name="hEngine">引擎句柄</param>
+            <param name="livenessInfo">检测到的IR活体信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFGetVersion">
+            <summary>
+            获取SDK版本信息。
+            </summary>
+            <returns>成功返回版本信息，失败返回Null。</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Arcsoft_Face_3_0.ASFUninitEngine(System.IntPtr)">
+            <summary>
+            销毁SDK引擎。
+            </summary>
+            <param name="pEngine">引擎handle</param>
+            <returns>调用结果</returns>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_DetectMode">
+            <summary>
+            检测模式
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ASF_DetectMode.ASF_DETECT_MODE_VIDEO">
+            <summary>
+            Video模式，一般用于多帧连续检测
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ASF_DetectMode.ASF_DETECT_MODE_IMAGE">
+            <summary>
+            Image模式，一般用于静态图的单次检测
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ArcSoftFace_OrientPriority">
+            <summary>
+            人脸检测方向
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ArcSoftFace_OrientPriority.ASF_OP_0_ONLY">
+            <summary>
+            常规预览下正方向
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ArcSoftFace_OrientPriority.ASF_OP_90_ONLY">
+            <summary>
+            基于0°逆时针旋转90°的方向
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ArcSoftFace_OrientPriority.ASF_OP_270_ONLY">
+            <summary>
+            基于0°逆时针旋转270°的方向
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ArcSoftFace_OrientPriority.ASF_OP_180_ONLY">
+            <summary>
+            基于0°旋转180°的方向（逆时针、顺时针效果一样）
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ArcSoftFace_OrientPriority.ASF_OP_0_HIGHER_EXT">
+            <summary>
+            全角度
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ArcSoftFace_OrientCode">
+            <summary>
+            检测到的人脸角度
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_DetectModel">
+            <summary>
+            检测模型
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_CompareModel">
+            <summary>
+            人脸比对可选的模型
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_ImagePixelFormat">
+            <summary>
+            支持的颜色空间颜色格式
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.FaceEngineMask">
+            <summary>
+            算法功能常量值
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_VERSION">
+            <summary>
+            SDK版本信息。
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_ActiveFileInfo">
+            <summary>
+            激活文件信息。
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ASF_ActiveFileInfo.startTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ASF_ActiveFileInfo.endTime">
+            <summary>
+            截止时间
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ASF_ActiveFileInfo.platform">
+            <summary>
+            平台
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ASF_ActiveFileInfo.sdkType">
+            <summary>
+            sdk类型
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ASF_ActiveFileInfo.appId">
+            <summary>
+            APPID
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ASF_ActiveFileInfo.sdkKey">
+            <summary>
+            SDKKEY
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ASF_ActiveFileInfo.sdkVersion">
+            <summary>
+            SDK版本号
+            </summary>
+        </member>
+        <member name="F:MicroService_Face_3_0.ASF_ActiveFileInfo.fileVersion">
+            <summary>
+            激活文件版本号
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.MRECT">
+            <summary>
+            人脸框信息。
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_SingleFaceInfo">
+            <summary>
+            单人脸信息。
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_MultiFaceInfo">
+            <summary>
+            多人脸信息。
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_FaceFeature">
+            <summary>
+            人脸特征。
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_AgeInfo">
+            <summary>
+            年龄信息。
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_GenderInfo">
+            <summary>
+            性别信息。
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_Face3DAngle">
+            <summary>
+            3D角度信息。
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_LivenessThreshold">
+            <summary>
+            活体置信度。
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASF_LivenessInfo">
+            <summary>
+            活体信息。
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.ASVLOFFSCREEN">
+            <summary>
+            图像数据信息。
+            </summary>
+        </member>
+        <member name="T:MicroService_Face_3_0.Controllers.ArcFaceController">
+            <summary>
+            虹软人脸SDK3.0版本应用。
+            </summary>
+        </member>
+        <member name="M:MicroService_Face_3_0.Controllers.ArcFaceController.#ctor(Microsoft.Extensions.Configuration.IConfiguration,MicroService_Face_3_0.IEnginePoor)">
+            <summary>
+            构造函数。
+            </summary>
+            <param name="configuration">配置依赖注入。</param>
+            <param name="process">引擎池依赖注入。</param>
+        </member>
+        <member name="M:MicroService_Face_3_0.Controllers.ArcFaceController.CompareTwoFaces(Microsoft.AspNetCore.Http.IFormFile,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            对比两张照片中人脸的相似度，每张照片最大10M。
+            </summary>
+            <param name="faceA">照片1。</param>
+            <param name="faceB">照片2。</param>
+            <returns>true 代表检测成功，false表示失败。msg 中有详细结果（true情况是相似度，false情况是错误信息）。</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Controllers.ArcFaceController.CheckID(Microsoft.AspNetCore.Http.IFormFile,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            对比人脸和证件照片的相似的，用于1:1对比，每张照片最大10M。
+            </summary>
+            <param name="facePhoto">人脸照片。</param>
+            <param name="idPhoto">证件照片。</param>
+            <returns>true 代表检测成功，false表示失败。msg 中有详细结果（true情况是相似度，false情况是错误信息）。</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Controllers.ArcFaceController.CheckAliveFace(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            RGB活体检测，用于检测图片中人脸时候是首次成像（非翻拍），每张照片最大10M。
+            </summary>
+            <param name="facePhoto">人脸照片</param>
+            <returns> true 代表检测成功，false表示失败。msg 中有详细结果（true情况是活体检测结果，false情况是错误信息）。</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Controllers.ArcFaceController.CheckFace3DAngle(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            检测人脸的3D角度(包括横滚角,偏航角,俯仰角),每张照片最大10M。
+            </summary>
+            <param name="facePhoto">人脸照片</param>
+            <returns>true 代表检测成功，false表示失败。msg 中有详细结果（true情况是3D角度检测结果，false情况是错误信息）。</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Controllers.ArcFaceController.AIFortuneTelling(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            AI算命（包括性别，年龄),每张照片最大10M。
+            </summary>
+            <returns>true 代表检测成功，false表示失败。msg 中有详细结果（true情况是算命结果，false情况是错误信息）。</returns>
+        </member>
+        <member name="M:MicroService_Face_3_0.Controllers.HealthCheckController.Index">
+            <summary>
+            Health check
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:MicroService_Face_3_0.Models.CustomResult.Success">
+            <summary>
+            成功标志
+            </summary>
+        </member>
+        <member name="P:MicroService_Face_3_0.Models.CustomResult.msg">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="P:MicroService_Face_3_0.Models.ImageInfo.width">
+            <summary>
+            图片像素宽
+            </summary>
+        </member>
+        <member name="P:MicroService_Face_3_0.Models.ImageInfo.height">
+            <summary>
+            图片像素高
+            </summary>
+        </member>
+        <member name="P:MicroService_Face_3_0.Models.ImageInfo.format">
+            <summary>
+            图片格式
+            </summary>
+        </member>
+    </members>
+</doc>
